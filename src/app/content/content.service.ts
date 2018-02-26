@@ -14,15 +14,13 @@ export class ContentService {
   }
 
   public getArticles(): Observable<any> {
-    return this.http.get('https://angula-6580c.firebaseio.com/data.json')
+    return this.http
+      .get('https://angula-6580c.firebaseio.com/data.json')
       .pipe(
-      map((request) => {
-        return Object.values(request);
-      })
-      )
-      ;
-
+        map((request) => {
+          return Object.values(request);
+        })
+      );
   }
-
 }
 

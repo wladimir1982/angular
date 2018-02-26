@@ -1,4 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+
+
+
 
 @Component ({
   selector: 'news-app',
@@ -6,6 +9,30 @@ import {Component} from "@angular/core";
   styleUrls: ['./news.component.css']
 })
 
-export class NewsComponent {
-  test
+export class NewsComponent implements OnInit, OnChanges{
+
+  public visible: boolean = true;
+
+
+ @Input() title: string;
+ @Input() email: string;
+ @Input() description: string;
+ @Input() id: number;
+
+
+ constructor() {}
+
+  ngOnInit() {
+    console.log('Init');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Change', changes);
+  }
+
+  public toggleDesc(): void {
+    this.visible = !this.visible;
+  }
+
 }
+

@@ -6,7 +6,14 @@
 }
 .info-title {
   margin: 0 auto;
-  /*font-family: Arial, sans-serif;*/
-
 }
 
+.info-description {
+  margin-bottom: 30px;
+}
+
+span {
+  color: brown;
+  font-weight: bold;
+  text-transform: uppercase;
+}

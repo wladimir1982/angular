@@ -10,9 +10,12 @@ import {SetupPageService} from "./setup-page.service";
 })
 export class SetupPageComponent implements OnInit {
 
+
+
   constructor(private setupPageService: SetupPageService) { }
 
   form: FormGroup;
+  public  a;
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -23,23 +26,9 @@ export class SetupPageComponent implements OnInit {
   }
 
   onSubmit() {
-     /*this.form.value
-     *
-     * {
-     * email: 'qwe',
-     * text: 'test',
-     * title: 'te'
-     * }
-     *let a = {
-     * s: 1,
-     * d: 2
-
-     * }
-     *
-     *
-     * */
-
      let obj = {
+       id: this.getRandomId(1, 1000000),
+       tag: this.a.tag,
        email: this.form.value.email,
        title: this.form.value.title,
        description: this.form.value.text
@@ -48,6 +37,16 @@ export class SetupPageComponent implements OnInit {
      this.setupPageService.postArticles(obj)
       .subscribe((request: any) => console.log(request));
     console.log('Submited!', this.form.value);
+
+  }
+
+
+  updateNewsList(e: {tag: string}) {
+    this.a = e;
+  }
+
+ getRandomId(min, max) {
+   return Math.floor(min + Math.random() * (max + 1 - min));
   }
 
 }

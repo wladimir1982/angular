@@ -37,9 +37,6 @@ input:not([type]), input[type=text]:not(.browser-default) {
 
 .btn {
   width: 120px;
-  /*height: 35px;*/
-  /*background: lime;*/
-  /*border-radius: 5px;*/
   margin: auto;
 }
 

@@ -2,13 +2,17 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {ContentComponent} from "./content/content.component";
 import {SetupPageComponent} from "./setup-page/setup-page.component";
-import {InfoComponent} from "./info/info.component";
+import {TestComponent} from "./test/test.component";
+import {RegistrationFormComponent} from "./registration-form/registration-form.component";
 
 
-const routes = [
+
+
+const routes: Routes = [
   {path: '', component: ContentComponent},
   {path: 'setup', component: SetupPageComponent},
-  {path: 'setup/:id', component: InfoComponent}
+  {path: 'test', component: TestComponent},
+  // {path: 'registration-form', component: RegistrationFormComponent}
 ];
 
 @NgModule({

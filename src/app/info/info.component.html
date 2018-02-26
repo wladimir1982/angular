@@ -1,38 +1,27 @@
 <div class="info">
 
   <header class="header-info">
-    <h2 class="info-title">Europeans among 36 charged over global cyberfraud ring that targeted millions of people {{id}}</h2>
+    <h2 class="info-title">{{ article?.title }}</h2>
   </header>
 
   <main class="info-main">
     <p class="info-description">
-      Residents of Britain, France and Italy are among 36 defendants charged for their alleged involvement in a cybercrime operation responsible for more than $530 million (€433 million) of losses to consumers, businesses, and financial institutions.
-
-      In a statement this week, the US Justice Department said the cybercrime ring was one of the largest it had ever prosecuted, and had targeted millions of people around the world.
-
-      Operating under the slogan "In Fraud We Trust," members of the Infraud Organization used an online forum to purchase and sell stolen identities, credit cards, and financial information.
-
-      “Like most organized transnational criminal enterprises, Infraud’s members had defined roles within the organization’s hierarchy. But unlike the organized crime of years past, many of the organization’s nearly 11,000 members have never met in person and do not know the true identities of their co-conspirators,” the statement said.
-
-      Thirteen of the suspects are now in custody.
-
-      They include 29-year-old Anthony Nnamdi Okeakpu, nicknamed “Moneymafia”, from the UK; 56-year-old Gennaro Fioretti, or “Genny Fioretti”, from Italy; and 37-year-old Roland Patrick N’Djimbi, known as “Darker”, from France.
-
-      Other defendants included Ukrainian Svyatoslav Bondarenko, who is accused of creating Infraud in October 2010, and residents of the US, Russia, Canada and Macedonia, among other countries.
-
-      “Infraud operated like a business to facilitate cyber fraud on a global scale,” said Acting Assistant Attorney General John Cronan of the Justice Department's Criminal Division.
-
-      “The Department of Justice refuses to allow these cybercriminals to use the perceived anonymity of the Internet as a shield for their crimes. We are committed to working closely with our international counterparts to identify, investigate, and bring to justice the perpetrators of these crimes, wherever in the world they operate,” he added.
     </p>
 
-    <div class="subtitle">
-      <a [routerLink]="['/setup', 1]">News №1</a>
-      <a [routerLink]="['/setup', 2]">News №2</a>
-    </div>
+    <h4>{{ article?.id }} </h4>
+    <h4> {{ article?.email }} </h4>
+    <p> {{ article?.description }} </p>
   </main>
 
   <footer class="info-footer">
-
+    <button class="btn" (click)="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i> go back</button>
   </footer>
-
+  <a [routerLink]="['/info', 1]" class="article__footer-read">
+    <span class="article__footer-text">continue reading</span>
+    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+  </a>
+  <a [routerLink]="['/info', 2]" class="article__footer-read">
+    <span class="article__footer-text">continue reading</span>
+    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+  </a>
 </div>
