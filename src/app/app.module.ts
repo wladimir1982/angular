@@ -19,6 +19,7 @@ import {NewsComponent} from "./news/news.component";
 import { TestComponent } from './test/test.component';
 import { MinusComponent } from './test/minus/minus.component';
 import {RegistrationFormModule} from "./registration-form/registration-form.module";
+import { RegistrationComponent } from './registration/registration.component';
 
 
 
@@ -33,7 +34,8 @@ import {RegistrationFormModule} from "./registration-form/registration-form.modu
     InfoComponent,
     TagsComponent,
     TestComponent,
-    MinusComponent
+    MinusComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

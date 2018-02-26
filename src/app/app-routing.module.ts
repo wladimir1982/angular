@@ -4,6 +4,7 @@ import {ContentComponent} from "./content/content.component";
 import {SetupPageComponent} from "./setup-page/setup-page.component";
 import {TestComponent} from "./test/test.component";
 import {RegistrationFormComponent} from "./registration-form/registration-form.component";
+import {RegistrationComponent} from "./registration/registration.component";
 
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: '', component: ContentComponent},
   {path: 'setup', component: SetupPageComponent},
   {path: 'test', component: TestComponent},
+  {path: 'registration', component: RegistrationComponent}
   // {path: 'registration-form', component: RegistrationFormComponent}
 ];
 
