@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {Location} from "@angular/common";
+import {RegistrationFormService} from "../registration-form.service";
 
 
 @Component({
@@ -10,7 +11,16 @@ import {Location} from "@angular/common";
 
 export class RegistrationFormTwoComponent {
 
-  constructor(private location: Location) {}
+
+  constructor(private location: Location, private registrationFormService: RegistrationFormService) {}
+
+  login: string = this.registrationFormService.obj.login;
+  password: string = this.registrationFormService.obj.password;
+  confirm: string = this.registrationFormService.obj.confirm;
+  firstName: string = this.registrationFormService.obj.firstName;
+  lastName: string = this.registrationFormService.obj.lastName;
+  desc: string = this.registrationFormService.obj.desc;
+
 
   goBack(): void {
     this.location.back();

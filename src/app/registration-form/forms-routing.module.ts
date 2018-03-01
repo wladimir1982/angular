@@ -3,7 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {RegistrationFormComponent} from "./registration-form.component";
 import {RegistrationFormOneComponent} from "./registration-form-one/registration-form-one.component";
 import {RegistrationFormTwoComponent} from "./registration-form-two/registration-form-two.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -16,7 +16,8 @@ const formsRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(formsRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule
