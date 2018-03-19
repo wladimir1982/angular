@@ -1,18 +1,23 @@
 import {Component, OnInit} from "@angular/core";
 import {RegistrationFormService} from "./registration-form.service";
 import {Router} from "@angular/router";
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormBuilder, FormGroup, Validators, FormArray, ValidatorFn} from "@angular/forms";
 
 
-// function passwordMatcher(c: AbstractControl) {
-//   return c.get('password').value === c.get('confirm').value
-//     ? null : {'nomatch': true};
-// }
-
-let passwordMatchValidator = function(formBuilder: FormGroup) {
-  return formBuilder.get('password').value === formBuilder.get('confirm').value ? null : { 'mismatch': true };
+function  passwordMatcher(c: AbstractControl) {
+  return c.get('password').value === c.get('confirm').value
+    ? null : {'mismatch': true};
 }
 
+// const passwordMatcher = (g: FormGroup)=> {
+//   console.log('a', g);
+//   return null;
+// };
+
+export const regExps: { [key: string]: RegExp } = {
+  password: /^(?=.*[a-z])(?=.*[A-Z]).{6,12}$/,
+  phone: /^(\+?\d+)?\s*(\(\d+\))?[\s-]*([\d-]*)$/,
+};
 
 @Component({
   selector: 'app-registration-form',
@@ -22,67 +27,92 @@ let passwordMatchValidator = function(formBuilder: FormGroup) {
 
 export class RegistrationFormComponent implements OnInit {
 
-  form: FormGroup;
-
+  public form: FormGroup;
 
   constructor(private registrationFormService: RegistrationFormService, private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-
-
-
-
-
     this.form = this.formBuilder.group({
-      email: ['', [ Validators.required, Validators.pattern('^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$') ]],
-
-
-
-      // account: this.formBuilder.group({
-      //   password: ['', Validators.required, Validators.minLength(6)],
-      //   confirm: ['', Validators.required, Validators.minLength(6)],
-      // }, {validator: passwordMatcher}),
-
+      email: ['', [ Validators.required, Validators.email ], this.checkForEmail],
       account: this.formBuilder.group({
-        password: new FormControl('', Validators.minLength(6)),
-        passwordConfirm: new FormControl('', Validators.minLength(6)),
-      }, passwordMatchValidator)
-
+        password: ['', [Validators.required, Validators.pattern(regExps.password)]],
+        confirm: ['', [Validators.required]],
+      }, {validator: passwordMatcher}),
+      phoneNumbers: new FormArray([this.buildPhoneNumberComponent()])
     });
-    console.log(this.form);
-
-    this.form.valueChanges.subscribe(() => {
-      console.log(this.form)
-    });
-    // this.form = new FormGroup({
-    //   login: new FormControl(''),
-    //   pass1: new FormControl(''),
-    //   pass2: new FormControl('')
-    // });
   }
 
+  checkForEmail(control: FormControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@mail.ru') {
+          resolve({
+            'emailIsUsed': true
+          });
+        } else {
+          resolve(null);
+        }
+      }, 3000);
+    });
+  }
 
   email: string = this.registrationFormService.obj.email;
   password: string = this.registrationFormService.obj.password;
   confirm: string = this.registrationFormService.obj.confirm;
+  phoneNumbers: any = this.registrationFormService.obj.phoneNumbers;
+
+
+  buildPhoneNumberComponent() {
+    return new FormControl('', [Validators.required, Validators.pattern(regExps.phone)]);
+  }
+
+
+  addPhone() {
+    (<FormArray>this.form.controls.phoneNumbers).push(this.buildPhoneNumberComponent());
+  }
+
+  removePhone(i: number) {
+    (<FormArray>this.form.controls.phoneNumbers).removeAt(i);
+  }
 
   goNext() {
     this.router.navigate(['/one']);
-    this.registrationFormService.obj.login = this.email;
-    this.registrationFormService.obj.password = this.password;
-    this.registrationFormService.obj.confirm = this.confirm;
+    this.registrationFormService.obj.email = this.email;
+    this.registrationFormService.obj.password = this.form.get('account.password').value;
+    this.registrationFormService.obj.phoneNumbers = <FormArray>this.form.controls.phoneNumbers;
     console.log(this.form);
-    console.log('Email: ' + this.form.value.email);
-    console.log('Password: ' + this.form.value.password);
-    console.log('Confirm: ' + this.form.value.confirm);
   }
 
 }
 
 
 
-// equalValidator({value}: FormGroup):{[key: string]: any} {
-//   const [first, ...rest] = Object.keys(value || {});
-//   const valid = rest.every(v => value[v] === value[first]);
-//   return valid ? null : {equal: true}
-// },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 .header {
   background-image: url('../../assets/img/imagebg.png');
-  /*background-attachment: fixed;*/
+  background-attachment: fixed;
   padding-top: 48px;
   height: 100%;
   min-height: 100vh;
@@ -15,7 +15,9 @@
   flex-direction: row;
   flex-wrap: nowrap;
   /*align-items: center;*/
+  padding: 20px 10px;
   margin-bottom: 170px;
+
 }
 
 .header__logo {
@@ -89,3 +91,15 @@
   border: solid 2px #ffffff;
   transition: all 0.1s linear 0.1s;
 }
+
+.brand-logo {
+  padding-left: 15px;
+}
+
+/*@media only screen and (min-width: 680px) {*/
+  /*nav .brand-logo {*/
+    /*left: 50% !important;*/
+    /*-webkit-transform: translateX(-50%) !important;*/
+    /*transform: translateX(-50%) !important;*/
+  /*}*/
+/*}*/
