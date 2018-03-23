@@ -22,8 +22,11 @@
           <li class="menu__item">
             <a class="menu__link" (click)="goNav('/registration-form')">New User</a>
           </li>
-          <li>
-            <a (click)="goNav('/users')">Users</a>
+          <li class="menu__item">
+            <a class="menu__link" (click)="goNav('/users')">Users</a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" (click)="goNav('/tasks')">Tasks Page</a>
           </li>
 
         </ul>
@@ -49,6 +52,7 @@
       <li><a (click)="goNav('/test')">Current</a></li>
       <li><a (click)="goNav('/registration-form')">New User</a></li>
       <li><a (click)="goNav('/users')">Users</a></li>
+      <li><a (click)="goNav('/tasks')">Tasks Page</a></li>
     </ul>
   </div>
 </nav>

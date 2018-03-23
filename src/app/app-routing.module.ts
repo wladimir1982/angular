@@ -6,6 +6,7 @@ import {TestComponent} from "./test/test.component";
 import {RegistrationFormComponent} from "./registration-form/registration-form.component";
 import {RegistrationComponent} from "./registration/registration.component";
 import {UsersComponent} from "./registration-form/users/users.component";
+import {TasksPageComponent} from "./tasks-page/tasks-page.component";
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'setup', component: SetupPageComponent},
   {path: 'test', component: TestComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'users', component: UsersComponent}
+  {path: 'users', component: UsersComponent},
+  {path: 'tasks', component: TasksPageComponent}
   // {path: 'registration-form', component: RegistrationFormComponent}
 ];
 

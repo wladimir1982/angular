@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {NewsModule} from "./news/news.module";
+import {TasksPageModule} from "./tasks-page/tasks-page.module";
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from "./header/header.component";
@@ -19,6 +20,7 @@ import { TestComponent } from './test/test.component';
 import { MinusComponent } from './test/minus/minus.component';
 import {RegistrationFormModule} from "./registration-form/registration-form.module";
 import { RegistrationComponent } from './registration/registration.component';
+
 
 
 
@@ -43,7 +45,8 @@ import { RegistrationComponent } from './registration/registration.component';
     HttpClientModule,
     AppRoutingModule,
     NewsModule,
-    RegistrationFormModule
+    RegistrationFormModule,
+    TasksPageModule
   ],
   providers: [ContentService, SetupPageService],
   bootstrap: [AppComponent]
